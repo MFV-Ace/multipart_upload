@@ -1,0 +1,33 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres
+    volumes:
+    - ./data/db:/var/lib/postgresql/data
+    environment:
+    - POSTGRES_USER=upload
+    - POSTGRES_PASSWORD=upload
+    - POSTGRES_DB=upload
+    ports:
+    - "5432:5432"
+
+  redis:
+    image: redis
+    ports:
+      - '6379:6379'
+
+#  localstack:
+#    image: localstack/localstack:1.4.0
+#    environment:
+#      DEBUG: false
+#      DOCKER_HOST: unix:///var/run/docker.sock
+#      SERVICES: s3
+#      DISABLE_CORS_HEADERS: 1
+#      DISABLE_CORS_CHECKS: 1
+#    volumes:
+#      - /var/run/docker.sock:/var/run/docker.sock
+#      - ./backend/localstack:/var/lib/localstack
+#      - ./backend/scripts/localstack.sh:/etc/localstack/init/ready.d/localstack.sh
+#    ports:
+#      - 4566:4566

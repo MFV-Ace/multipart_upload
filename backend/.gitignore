@@ -1,0 +1,5 @@
+.idea
+
+backend/localstack
+data
+**/__pycache__/**
